@@ -11,13 +11,13 @@ import header_img7 from './header_img7.jpg'
 
 import search_icon from './search_icon.png'
 
-import product_1 from './nike_1.png'
-import product_2 from './nike_1.png'
-import product_3 from './nike_1.png'
-import product_4 from './nike_1.png'
-import product_5 from './nike_1.png'
+import product_1 from './formal_shoe.jpg'
+import product_2 from './running_shoe.jpeg'
+import product_3 from './casual_shoe.jpg'
+import product_4 from './boots_shoe.jpg'
+import product_5 from './slipers.jpg'
 import product_6 from './nike_1.png'
-import product_7 from './nike_1.png'
+import product_7 from './campus.jpg'
 // import product_8 from './nike_1.png'
  
 
