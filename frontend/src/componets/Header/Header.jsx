@@ -1,9 +1,8 @@
-import "./Header.css";
-import { assets } from "../../assets/assets";
-import { Carousel } from "@material-tailwind/react";
 import { useState, useEffect } from "react";
+import { assets } from "../../assets/assets";
+import "./Header.css";  
 
-const Header = () => {
+const Slider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const images = [
     assets.header_img1,
@@ -14,39 +13,30 @@ const Header = () => {
     assets.header_img6,
     assets.header_img7,
   ];
+  const interval = 4000;
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setActiveIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 3000); // Change slide every 3 seconds
+    }, interval);
 
     return () => clearInterval(intervalId);
-  }, [images]);
+  }, [images, interval]);
 
   return (
-    <>
-      <div className="header">
-        <div className="img">
-          <Carousel
-            className="rounded-xl"
-            activeIndex={activeIndex}
-            onChange={(index) => setActiveIndex(index)}
-          >
-            {images.map((image, index) => (
-              <img
-                key={index}
-                src={image}
-                alt={`image ${index + 1}`}
-                className="h-full w-full object-cover"
-              />
-            ))}
-          </Carousel>
+    <div className="slider-container">
+      {images.map((image, index) => (
+        <div
+          key={index}
+          className={index === activeIndex ? "slide active" : "slide"}
+        >
+          <img src={image} alt={`Slide ${index + 1}`} className="slide-image" />
         </div>
-      </div>
-    </>
+      ))}
+    </div>
   );
 };
 
-export default Header;
+export default Slider;

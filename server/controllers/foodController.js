@@ -31,23 +31,6 @@ const addFood = async (req, res) => {
   }
 };
 
-//All food list
-const listFood = async (req, res) => {
-  try {
-    const foods = await Food.find({});
-    res.json({
-      success: true,
-      message: "All food found",
-      data: foods,
-    });
-  } catch (error) {
-    res.json({
-      success: false,
-      message: "All food not found:  " + error,
-    });
-  }
-};
-
 //Remove food items
 const removeFood = async (req, res) => {
   try {
@@ -71,6 +54,23 @@ const removeFood = async (req, res) => {
     res.json({
       success: false,
       message: "food item not deleted: " + error,
+    });
+  }
+};
+
+//All food list
+const listFood = async (req, res) => {
+  try {
+    const foods = await Food.find({});
+    res.json({
+      success: true,
+      message: "All food found",
+      data: foods,
+    });
+  } catch (error) {
+    res.json({
+      success: false,
+      message: "All food not found:  " + error,
     });
   }
 };

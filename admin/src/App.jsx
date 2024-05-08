@@ -12,7 +12,7 @@ const App = () => {
   
   return (
     <div>
-      <ToastContainer />
+      <ToastContainer autoClose={1100} />
       <Navbar />
       <hr />
       <div className="app-content">

@@ -9,7 +9,7 @@ const frontend_url = "http://localhost:5173";
 
 // Function to place an order for a user
 const placeOrder = async (req, res) => {
-  console.log("placeOrder "+req.body);
+  console.log("placeOrder " + req.body);
   try {
     // Create a new order document
     const newOrder = new orderModel({
@@ -44,7 +44,7 @@ const placeOrder = async (req, res) => {
         product_data: {
           name: "Delivery Charges",
         },
-        unit_amount: 2 * 100, 
+        unit_amount: 2 * 100,
       },
       quantity: 1,
     });
@@ -66,7 +66,7 @@ const placeOrder = async (req, res) => {
     console.log("Error is: " + error);
     res.json({
       success: false,
-      message: "Error: " + error.message,  
+      message: "Error: " + error.message,
     });
   }
 };
@@ -121,35 +121,65 @@ const listOrders = async (req, res) => {
   try {
     const orders = await orderModel.find({});
     res.json({
-      success:true,
-      data:orders,
-      message:"Get all orders"
-    })
+      success: true,
+      data: orders,
+      message: "Get all orders",
+    });
   } catch (error) {
     console.log(error);
     res.json({
-      success:false,
-      message:"Error Get all orders " + error,
-    })
+      success: false,
+      message: "Error Get all orders " + error,
+    });
   }
 };
 
 //updating order status - Admin
-const updateStatus = async(req,res) =>{
+const updateStatus = async (req, res) => {
   try {
-    await orderModel.findByIdAndUpdate(req.body.orderId,{status:req.body.status});
+    await orderModel.findByIdAndUpdate(req.body.orderId, {
+      status: req.body.status,
+    });
     res.json({
-      success:true,
-      message:"Status Updated"
-    })
+      success: true,
+      message: "Status Updated",
+    });
   } catch (error) {
     console.log(error);
     res.json({
-      success:false,
-      message:"Error while Status Updating: " + error,
-    })
+      success: false,
+      message: "Error while Status Updating: " + error,
+    });
   }
-}
+};
 
+// Remove order from admin panel
+const deleteOrder = async (req, res) => {
+  try {
+    const {id} = req.params;
+    const deleteItem = await orderModel.findById(id);
+    console.log("deleteItem: "+ deleteItem);
+    if (!deleteItem) return res.send("no such item found");
+    const DeleteItem = await orderModel.findByIdAndDelete(id);
+    res.json({
+      success: true,
+      message: "Item Deleted successful",
+      data: DeleteItem,
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({
+      success: false,
+      message: "Error while deleting item: " + error,
+    });
+  }
+};
 
-module.exports = { placeOrder, verifyOrder, userOrders, listOrders, updateStatus };
+module.exports = {
+  placeOrder,
+  verifyOrder,
+  userOrders,
+  listOrders,
+  updateStatus,
+  deleteOrder,
+};

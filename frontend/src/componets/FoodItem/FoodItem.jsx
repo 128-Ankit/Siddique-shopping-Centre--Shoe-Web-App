@@ -7,16 +7,14 @@ import "./FoodItem.css";
 const FoodItem = ({ id, name, price, description, image }) => {
   const { cartItems, addToCart, removeFromCart, url, food_list } =
     useContext(StoreContext);
-  console.log(cartItems);
+  console.log("food list" + food_list, "cartItem " + cartItems);
 
   return (
     <>
-    
-      {(!food_list || !cartItems) ? (
-        "loading data"
+      {!food_list || !cartItems ? (
+        "loading... "
       ) : (
         <div className="food-item">
-          
           <div className="food-item-img-container">
             <img
               className="food-item-image"
@@ -54,7 +52,6 @@ const FoodItem = ({ id, name, price, description, image }) => {
             <p className="food-item-desc">{description}</p>
             <p className="food-item-price">₹{price}</p>
           </div>
-
         </div>
       )}
     </>
