@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./PlacedOrder.css";
 import { StoreContext } from "../../Context/StoreContex";
 import axios from "axios";
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const PlacedOrder = () => {
   const { getTotalCartAmount, token, food_list, cartItems, url } =
@@ -75,7 +75,7 @@ const PlacedOrder = () => {
   }, [token]);
 
   return (
-    <form onSubmit={(e)=>placeOrder(e)} className="place-order">
+    <form onSubmit={(e) => placeOrder(e)} className="place-order">
       <div className="place-order-left">
         <p className="title">Delivery Information</p>
         <div className="multi-fields">
@@ -164,18 +164,18 @@ const PlacedOrder = () => {
           <div>
             <div className="cart-total-details">
               <p>Subtotal</p>
-              <p>${getTotalCartAmount()}</p>
+              <p>₹{getTotalCartAmount()}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>${getTotalCartAmount() === 0 ? 0 : 2}</p>
+              <p>₹{getTotalCartAmount() === 0 ? 0 : 2}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <p>Total</p>
               <p>
-                ${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}
+                ₹{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}
               </p>
             </div>
           </div>

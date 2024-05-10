@@ -6,7 +6,7 @@ const addFood = async (req, res) => {
     const { name, description, price, category } = req.body;
     const image = req.file.filename; // Multer stores uploaded file details in req.file
 
-    // Create new Food instance
+    // Create new Product instance
     const newFood = new Food({
       name,
       description,
@@ -20,7 +20,7 @@ const addFood = async (req, res) => {
 
     res.status(201).json({
       success: true,
-      message: "Food added successfully",
+      message: "Product added successfully",
     });
   } catch (error) {
     console.error("Error adding food:", error);
@@ -31,29 +31,29 @@ const addFood = async (req, res) => {
   }
 };
 
-//Remove food items
+//Remove items
 const removeFood = async (req, res) => {
   try {
     const { id } = req.params;
     const food = await Food.findById(id);
     if (!food) {
       return res.status(500).json({
-        message: "food item not found",
+        message: "Product not found",
       });
     }
     fs.unlink(`uploads/${food.image}`, () => {});
 
-    //Delete food item otherwise
+    //Delete item otherwise
     const deleteFood = await Food.findByIdAndDelete(id);
     res.status(200).json({
       success: true,
-      message: "food item deleted successful",
+      message: "Item deleted successful",
       data: deleteFood,
     });
   } catch (error) {
     res.json({
       success: false,
-      message: "food item not deleted: " + error,
+      message: "Item not deleted: " + error,
     });
   }
 };
@@ -64,13 +64,13 @@ const listFood = async (req, res) => {
     const foods = await Food.find({});
     res.json({
       success: true,
-      message: "All food found",
+      message: "All Items found",
       data: foods,
     });
   } catch (error) {
     res.json({
       success: false,
-      message: "All food not found:  " + error,
+      message: "All Items not found:  " + error,
     });
   }
 };
