@@ -30,16 +30,5 @@ To run this project locally, follow these steps:
 - [Live Project](https://www.youtube.com/watch?v=5wV2fVebKy4&feature=youtu.be)
 
 ### Screenshots
-Include screenshots of key pages such as the homepage, product catalog, product details, and admin dashboard.
 
-### Future Enhancements
-- Implementing user reviews and ratings for products.
-- Adding a wish list feature for users.
-- Enhancing the admin dashboard with more analytics and reports.
 
-### Contact
-For any questions or feedback, please reach out to [abhishekankit128@gmail.com](mailto:abhishekankit128@gmail.com).
-
----
-
-This detailed project description should provide a comprehensive overview of your e-commerce website for your GitHub repository.
