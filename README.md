@@ -29,6 +29,6 @@ To run this project locally, follow these steps:
 - [GitHub Repository](https://github.com/128-Ankit/Siddique-shopping-Centre--Shoe-Web-App)
 - [Live Project](https://www.youtube.com/watch?v=5wV2fVebKy4&feature=youtu.be)
 
-### Screenshots
+ 
 
 
